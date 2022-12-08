@@ -7,3 +7,5 @@ export 'user_details/user_details_widget.dart' show UserDetailsWidget;
 export 'edit_user/edit_user_widget.dart' show EditUserWidget;
 export 'user_attributes/user_attributes_widget.dart' show UserAttributesWidget;
 export 'look_models/look_models_widget.dart' show LookModelsWidget;
+export 'user_attributes_copy/user_attributes_copy_widget.dart'
+    show UserAttributesCopyWidget;

@@ -80,6 +80,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'lookModels',
               path: 'lookModels',
               builder: (context, params) => LookModelsWidget(),
+            ),
+            FFRoute(
+              name: 'userAttributesCopy',
+              path: 'userAttributesCopy',
+              builder: (context, params) => UserAttributesCopyWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

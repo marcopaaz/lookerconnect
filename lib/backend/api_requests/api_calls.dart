@@ -13,7 +13,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 class LookerGroup {
   static String baseUrl = 'https://hack.looker.com:19999';
   static Map<String, String> headers = {
-    'Authorization': 'token KgnrRvTFnXctQrGsD89Pwbrp3kdjqTPfFkD5c7mw',
+    'Authorization': 'token V7N9NRqGztRYYrQmBcnkqqwRJYVHTWtN5pQrSvd8',
   };
   static GetUserIDCall getUserIDCall = GetUserIDCall();
   static GetCurrentUserDataCall getCurrentUserDataCall =
@@ -322,5 +322,14 @@ String _serializeList(List? list) {
     return json.encode(list);
   } catch (_) {
     return '[]';
+  }
+}
+
+String _serializeJson(dynamic jsonVar) {
+  jsonVar ??= {};
+  try {
+    return json.encode(jsonVar);
+  } catch (_) {
+    return '{}';
   }
 }

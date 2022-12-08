@@ -152,7 +152,7 @@ class _SearchUserByIDWidgetState extends State<SearchUserByIDWidget> {
                   FFButtonWidget(
                     onPressed: () async {
                       out = await LookerGroup.getUserIDCall.call(
-                        userId: int.parse(queryUserIDController!.text),
+                        userId: int.tryParse(queryUserIDController!.text),
                       );
 
                       context.pushNamed(
