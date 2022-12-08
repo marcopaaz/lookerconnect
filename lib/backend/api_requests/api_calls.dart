@@ -13,7 +13,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 class LookerGroup {
   static String baseUrl = 'https://hack.looker.com:19999';
   static Map<String, String> headers = {
-    'Authorization': 'token cSTJgtkJC4xMfy6YZ8Jch2qccj3FzwX6MygddxxV',
+    'Authorization': 'token KgnrRvTFnXctQrGsD89Pwbrp3kdjqTPfFkD5c7mw',
   };
   static GetUserIDCall getUserIDCall = GetUserIDCall();
   static GetCurrentUserDataCall getCurrentUserDataCall =
@@ -24,6 +24,8 @@ class LookerGroup {
   static GetAllConnectionsCall getAllConnectionsCall = GetAllConnectionsCall();
   static GetAllDashboardIDsCall getAllDashboardIDsCall =
       GetAllDashboardIDsCall();
+  static GetUserNumberCall getUserNumberCall = GetUserNumberCall();
+  static GetLooksNumberCall getLooksNumberCall = GetLooksNumberCall();
 }
 
 class GetUserIDCall {
@@ -229,6 +231,54 @@ class GetAllDashboardIDsCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Get All Dashboard IDs',
       apiUrl: '${LookerGroup.baseUrl}/api/4.0/dashboards',
+      callType: ApiCallType.GET,
+      headers: {
+        ...LookerGroup.headers,
+      },
+      params: {
+        'fields': "id",
+      },
+      returnBody: true,
+      cache: false,
+    );
+  }
+
+  dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$[:].id''',
+        true,
+      );
+}
+
+class GetUserNumberCall {
+  Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get User Number',
+      apiUrl: '${LookerGroup.baseUrl}/api/4.0/users',
+      callType: ApiCallType.GET,
+      headers: {
+        ...LookerGroup.headers,
+      },
+      params: {
+        'fields': "id",
+      },
+      returnBody: true,
+      cache: false,
+    );
+  }
+
+  dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$[:].id''',
+        true,
+      );
+}
+
+class GetLooksNumberCall {
+  Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Get Looks Number',
+      apiUrl: '${LookerGroup.baseUrl}/api/4.0/looks',
       callType: ApiCallType.GET,
       headers: {
         ...LookerGroup.headers,

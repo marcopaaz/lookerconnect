@@ -260,86 +260,209 @@ class _HomeWidgetState extends State<HomeWidget> {
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            'Connections',
-                            style: FlutterFlowTheme.of(context).subtitle1,
-                          ),
-                          Text(
-                            formatNumber(
-                              LookerGroup.getAllConnectionsCall
-                                  .connections(
-                                    columnGetAllConnectionsResponse.jsonBody,
-                                  )
-                                  .toString()
-                                  .length,
-                              formatType: FormatType.decimal,
-                              decimalType: DecimalType.periodDecimal,
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Connections',
+                              style: FlutterFlowTheme.of(context).subtitle1,
                             ),
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xFF0F9D58),
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            'Dashboards',
-                            style: FlutterFlowTheme.of(context).subtitle1,
-                          ),
-                          FutureBuilder<ApiCallResponse>(
-                            future: LookerGroup.getAllDashboardIDsCall.call(),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50,
-                                    height: 50,
-                                    child: CircularProgressIndicator(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
-                                    ),
+                            Text(
+                              formatNumber(
+                                LookerGroup.getAllConnectionsCall
+                                    .connections(
+                                      columnGetAllConnectionsResponse.jsonBody,
+                                    )
+                                    .toString()
+                                    .length,
+                                formatType: FormatType.decimal,
+                                decimalType: DecimalType.periodDecimal,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFF0F9D58),
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w300,
                                   ),
-                                );
-                              }
-                              final textGetAllDashboardIDsResponse =
-                                  snapshot.data!;
-                              return Text(
-                                formatNumber(
-                                  LookerGroup.getAllDashboardIDsCall
-                                      .id(
-                                        textGetAllDashboardIDsResponse.jsonBody,
-                                      )
-                                      .toString()
-                                      .length,
-                                  formatType: FormatType.decimal,
-                                  decimalType: DecimalType.periodDecimal,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xFF0F9D58),
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w300,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 50, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              'Dashboards',
+                              style: FlutterFlowTheme.of(context).subtitle1,
+                            ),
+                            FutureBuilder<ApiCallResponse>(
+                              future: LookerGroup.getAllDashboardIDsCall.call(),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50,
+                                      height: 50,
+                                      child: CircularProgressIndicator(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                      ),
                                     ),
-                              );
-                            },
-                          ),
-                        ],
+                                  );
+                                }
+                                final textGetAllDashboardIDsResponse =
+                                    snapshot.data!;
+                                return Text(
+                                  formatNumber(
+                                    LookerGroup.getAllDashboardIDsCall
+                                        .id(
+                                          textGetAllDashboardIDsResponse
+                                              .jsonBody,
+                                        )
+                                        .toString()
+                                        .length,
+                                    formatType: FormatType.decimal,
+                                    decimalType: DecimalType.periodDecimal,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF0F9D58),
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ],
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(75, 0, 0, 0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Users',
+                                style: FlutterFlowTheme.of(context).subtitle1,
+                              ),
+                              FutureBuilder<ApiCallResponse>(
+                                future: LookerGroup.getUserNumberCall.call(),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: CircularProgressIndicator(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  final textGetUserNumberResponse =
+                                      snapshot.data!;
+                                  return Text(
+                                    formatNumber(
+                                      LookerGroup.getUserNumberCall
+                                          .id(
+                                            textGetUserNumberResponse.jsonBody,
+                                          )
+                                          .toString()
+                                          .length,
+                                      formatType: FormatType.decimal,
+                                      decimalType: DecimalType.periodDecimal,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF0F9D58),
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 72, 0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'Looks',
+                                style: FlutterFlowTheme.of(context).subtitle1,
+                              ),
+                              FutureBuilder<ApiCallResponse>(
+                                future: LookerGroup.getLooksNumberCall.call(),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: CircularProgressIndicator(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  final textGetLooksNumberResponse =
+                                      snapshot.data!;
+                                  return Text(
+                                    formatNumber(
+                                      LookerGroup.getLooksNumberCall
+                                          .id(
+                                            textGetLooksNumberResponse.jsonBody,
+                                          )
+                                          .toString()
+                                          .length,
+                                      formatType: FormatType.decimal,
+                                      decimalType: DecimalType.periodDecimal,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF0F9D58),
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               );
